@@ -1,11 +1,21 @@
+#이름:이선주, 학번:2021041042
 import random
-# 이름:이선주, 학번:2021041042
+
+def getnumber(strdata):
+    numstr=''
+    for ch in strdata:
+        if ch.isdigit():
+            numstr+=ch
+
+    return int(numstr)
+
 data=[]
-i,k=0,0
+i, k=0,0
 
 if __name__=="__main__":
     for i in range(0,10):
         tmp=hex(random.randrange(0,100000))
+        tmp=tmp[2:]
         data.append(tmp)
 
     print('정렬 전 데이터 :', end='')
@@ -13,11 +23,10 @@ if __name__=="__main__":
 
     for i in range(0, len(data)-1):
         for k in range(i+1, len(data)):
-            if int(data[i],16)>int(data[k],16):
+            if getnumber(data[i])>getnumber(data[k]):
                 tmp=data[i]
                 data[i]=data[k]
                 data[k]=tmp
 
-
-    print('\n정렬 후 데이터 :', end='')
-    [print(num, end='') for num in data]
+    print('\n정렬 후 데이터:', end='')
+    [print(num, end='')for num in data]
